@@ -1,0 +1,15 @@
+C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\bin\Debug\net6.0\BasicBankAppNum2.exe
+C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\bin\Debug\net6.0\BasicBankAppNum2.deps.json
+C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\bin\Debug\net6.0\BasicBankAppNum2.runtimeconfig.json
+C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\bin\Debug\net6.0\BasicBankAppNum2.dll
+C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\bin\Debug\net6.0\BasicBankAppNum2.pdb
+C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\obj\Debug\net6.0\BasicBankAppNum2.csproj.AssemblyReference.cache
+C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\obj\Debug\net6.0\BasicBankAppNum2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\obj\Debug\net6.0\BasicBankAppNum2.AssemblyInfoInputs.cache
+C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\obj\Debug\net6.0\BasicBankAppNum2.AssemblyInfo.cs
+C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\obj\Debug\net6.0\BasicBankAppNum2.csproj.CoreCompileInputs.cache
+C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\obj\Debug\net6.0\BasicBankAppNum2.dll
+C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\obj\Debug\net6.0\refint\BasicBankAppNum2.dll
+C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\obj\Debug\net6.0\BasicBankAppNum2.pdb
+C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\obj\Debug\net6.0\BasicBankAppNum2.genruntimeconfig.cache
+C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\obj\Debug\net6.0\ref\BasicBankAppNum2.dll
