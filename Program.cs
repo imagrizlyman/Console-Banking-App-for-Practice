@@ -22,7 +22,7 @@ namespace BasicBankAppNum2
         public static void BankIntro()
         {
             Console.WriteLine("*******************************************************");
-            Console.WriteLine("**            Welcome to HackDaddy's Bank            **");
+            Console.WriteLine("**            Welcome to Hackers Bank            **");
             Console.WriteLine("*******************************************************");
             Console.WriteLine();
             Console.WriteLine();
