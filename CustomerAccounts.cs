@@ -37,7 +37,8 @@ namespace BasicBankAppNum2
         public string UserName { get { return userName; } set { } }
         public string Password { get { return password; } set { } }
         public double Balance { get { return balance; } set { balance = value; } }
-        public string LoanList { get { return loanList.ToString(); } set { } }
+        public string LoanList { get { return loanList.ToString(); } set { loanList.Add(value.ToList()); } }
+
 
 
 
@@ -72,7 +73,7 @@ namespace BasicBankAppNum2
             Console.WriteLine("How can we help you with your account?");
             Console.WriteLine("1. Check existing balance");
             Console.WriteLine("2. Make a deposit");
-            Console.WriteLine("3. Make a withdrawl");
+            Console.WriteLine("3. Make a withdrawal");
             Console.WriteLine("4. Check your active loans");
             Console.WriteLine("5. Apply for a loan");
             Console.WriteLine("6. Log Out & Return to the Main Menu");
@@ -93,7 +94,7 @@ namespace BasicBankAppNum2
                     ExistingAccountMenu();
                     break;
                 case "3":
-                    ExistingAccountWithdrawl();
+                    ExistingAccountwithdrawal();
                     ExistingAccountMenu();
                     break;
                 case "4":
@@ -121,13 +122,13 @@ namespace BasicBankAppNum2
             Console.WriteLine($"Thank you for your deposit, your new balance is ${accountLoggedIn.Balance}.");
         }
 
-        private static void ExistingAccountWithdrawl()
+        private static void ExistingAccountwithdrawal()
         {
             Console.WriteLine("Please enter the amount you would like to withdraw");
-            string amountToWithdrawlString = Console.ReadLine();
-            double amountToWithdrawl = Convert.ToDouble(amountToWithdrawlString);
-            accountLoggedIn.Balance -= amountToWithdrawl;
-            Console.WriteLine($"Your withdrawl has completed. Your new balance is ${accountLoggedIn.Balance}");
+            string amountTowithdrawalString = Console.ReadLine();
+            double amountTowithdrawal = Convert.ToDouble(amountTowithdrawalString);
+            accountLoggedIn.Balance -= amountTowithdrawal;
+            Console.WriteLine($"Your withdrawal has completed. Your new balance is ${accountLoggedIn.Balance}");
         }
         public static void LoggingIN()
         {
