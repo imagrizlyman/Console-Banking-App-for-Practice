@@ -102,6 +102,7 @@ namespace BasicBankAppNum2
                     break;
                 case "5":
                     Loan.LoanApplication();
+                    ExistingAccountMenu();
                     break;
                 case "6":
                     Program.BankIntro();
