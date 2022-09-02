@@ -22,7 +22,7 @@ namespace BasicBankAppNum2
         static string usernameEntry;
         static string passwordEntry;
         public static bool loggedInSuccess;
-        public static List<Loan> loanList = new List<Loan> { };
+        public static List<Loan> loanList = new List<Loan> { }; 
         public CustomerAccounts(string firstNme, string lastNme, string dob, string userNme, string pswrd)
         {
             firstName = firstNme;
@@ -37,7 +37,7 @@ namespace BasicBankAppNum2
         public string UserName { get { return userName; } set { } }
         public string Password { get { return password; } set { } }
         public double Balance { get { return balance; } set { balance = value; } }
-        public string LoanList { get { return loanList.ToString(); } set { loanList.Add(value.ToList()); } }
+        public List<Loan> LoanList { get { return loanList; } set { loanList = value; } }
 
 
 
@@ -98,8 +98,10 @@ namespace BasicBankAppNum2
                     ExistingAccountMenu();
                     break;
                 case "4":
+                    Console.WriteLine(accountLoggedIn.LoanList.ToString());
                     break;
                 case "5":
+                    Loan.LoanApplication();
                     break;
                 case "6":
                     Program.BankIntro();

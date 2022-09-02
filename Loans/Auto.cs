@@ -11,6 +11,12 @@ namespace BasicBankAppNum2.Loans
         public Auto(string loanTyp, string loanNme, double loanAmnt, double intRate, int loanTrm, double paymentamnt) : base(loanTyp, loanNme, loanAmnt, intRate, loanTrm, paymentamnt)
         {
 
-        }  
+        }
+        
+        
+        public static void AutoLoanApplication()
+        {
+            
+        }
     }
 }
