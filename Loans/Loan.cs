@@ -21,7 +21,8 @@ namespace BasicBankAppNum2.Loans
         public static int loanTrm;
         public static double annualIncome;
         public static int creditScore;
-
+        public static string loanTyp;
+        public static bool loanDecision;
         
         public Loan(string loanTyp, string loanNme, double loanAmnt, double intRate, int loanTrm, double paymentamnt)
         {
@@ -35,24 +36,25 @@ namespace BasicBankAppNum2.Loans
         public double LoanBalance { get { return loanBalance; } set { loanBalance = value; } }
         public string LoanName { get; set; }
         public double LoanOriginationAmount { get { return loanOriginationAmount; } set { } }
-        public double InterestRate { get { return interestRate; } set { } }
+        public double InterestRate { get { return interestRate; } set { interestRate = value; } }
         public double MinimumPayment { get { return minimumPayment; } set { } }
         public int LoanTerm { get { return loanTerm; } set { } }
 
-        public static string LoanTypeDetermination()
+        public static void LoanTypeDetermination()
         {
             Console.WriteLine("Please Enter the type of loan you are seeking today. (Auto, Mortgage, Business, or Personal)");
-            return Console.ReadLine().ToLower();
+            loanTyp = Console.ReadLine().ToLower();
         }
 
         public static bool LoanApplication()
         {
             Console.WriteLine("Thank you for considering Hacker Bank for your loan.");
-            string loanType = LoanTypeDetermination();
-            LoanInformationCollection();
-            switch (loanType)
+            LoanTypeDetermination();
+            switch (loanTyp)
             {
                 case "auto":
+                    Auto.AutoLoanInformationCollection();
+
                     break;
                 case "mortgage":
                     break;
@@ -68,19 +70,6 @@ namespace BasicBankAppNum2.Loans
             }
             return true;
         }
-
-        public static void LoanInformationCollection()
-        {
-            Console.WriteLine("Please enter the dollar amount you are requesting for your loan:");
-            loanOrigAmount = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Please enter the amount of months you would like for your loan term:");
-            loanTrm = Convert.ToInt16(Console.ReadLine());
-            Console.WriteLine("Please enter your gross annual income:");
-            annualIncome = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Please enter your Credit Score:");
-            creditScore = Convert.ToInt16(Console.ReadLine());
-        }
-        
 
 
         /* FOR MAKING LOAN PAYMENTS, MAKE IT TO WHERE YOU HAVE TO PAY FROM YOUR BALANCE
