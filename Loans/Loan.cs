@@ -13,7 +13,7 @@ namespace BasicBankAppNum2.Loans
         public string loanType;
         public string loanName;
         public double loanOriginationAmount;
-        public double interestRate;
+        public static double interestRate;
         public int loanTerm;
         public double loanBalance;
         public double minimumPayment;
@@ -36,7 +36,7 @@ namespace BasicBankAppNum2.Loans
         public double LoanBalance { get { return loanBalance; } set { loanBalance = value; } }
         public string LoanName { get; set; }
         public double LoanOriginationAmount { get { return loanOriginationAmount; } set { } }
-        public double InterestRate { get { return interestRate; } set { interestRate = value; } }
+        public double InterestRate { get { return interestRate; } set { } }
         public double MinimumPayment { get { return minimumPayment; } set { } }
         public int LoanTerm { get { return loanTerm; } set { } }
 
