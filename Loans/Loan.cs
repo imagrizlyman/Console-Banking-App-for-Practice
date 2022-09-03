@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,12 +12,12 @@ namespace BasicBankAppNum2.Loans
     public class Loan
     {
         public string loanType;
-        public string loanName;
+        public static string loanName;
         public double loanOriginationAmount;
         public static double interestRate;
         public int loanTerm;
-        public double loanBalance;
-        public double minimumPayment;
+        public double loanBalance = loanOrigAmount;
+        public static double minimumPayment;
         public static double loanOrigAmount;
         public static int loanTrm;
         public static double annualIncome;
@@ -56,14 +57,7 @@ namespace BasicBankAppNum2.Loans
                 case "auto":
                     Auto.AutoLoanInformationCollection();
                     Auto.MaxLoanAmountDetermination();
-                    if (Auto.AutoLoanApplication())
-                    {
-
-                    }
-                        
-                    
-                    
-
+                    Auto.AutoLoanEstablishment();
                     break;
                 case "mortgage":
                     break;
@@ -79,6 +73,8 @@ namespace BasicBankAppNum2.Loans
             }
             return true;
         }
+
+        
 
 
         /* FOR MAKING LOAN PAYMENTS, MAKE IT TO WHERE YOU HAVE TO PAY FROM YOUR BALANCE

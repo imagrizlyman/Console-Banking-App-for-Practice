@@ -76,5 +76,33 @@ namespace BasicBankAppNum2.Loans
                     break;
             }
         }
+        public static void AutoLoanEstablishment()
+        {
+            if (Auto.AutoLoanApplication())
+            {
+                Console.WriteLine("You are approved for the new Auto Loan!");
+                minimumPayment = (loanOrigAmount / loanTrm) + (interestRate * loanOrigAmount) / loanTrm;
+                Console.WriteLine($"Your payment for this loan will be in the amount of {minimumPayment}, do you wish to continue with this loan? ");
+                string answer = Console.ReadLine().ToLower();
+                if (answer == "yes")
+                {
+                    Console.WriteLine("What will you name this loan?");
+                    loanName = Console.ReadLine();
+                    Auto newAutoLoan = new Auto("Auto", loanName, loanOrigAmount, interestRate, loanTrm, minimumPayment);
+                    CustomerAccounts.accountLoggedIn.LoanList.Add(newAutoLoan);
+                }
+                else
+                {
+                    CustomerAccounts.ExistingAccountMenu();
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("We do apologize, but we are unable to approve your application for an Auto loan at this time.");
+                Console.WriteLine("Feel free to apply again at a later time, Thank you.");
+                CustomerAccounts.ExistingAccountMenu();
+            }
+        }
     }
 }
