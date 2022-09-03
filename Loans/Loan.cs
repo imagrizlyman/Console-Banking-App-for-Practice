@@ -23,6 +23,7 @@ namespace BasicBankAppNum2.Loans
         public static int creditScore;
         public static string loanTyp;
         public static bool loanDecision;
+        public static double maxLoanAmount;
         
         public Loan(string loanTyp, string loanNme, double loanAmnt, double intRate, int loanTrm, double paymentamnt)
         {
@@ -54,6 +55,14 @@ namespace BasicBankAppNum2.Loans
             {
                 case "auto":
                     Auto.AutoLoanInformationCollection();
+                    Auto.MaxLoanAmountDetermination();
+                    if (Auto.AutoLoanApplication())
+                    {
+
+                    }
+                        
+                    
+                    
 
                     break;
                 case "mortgage":

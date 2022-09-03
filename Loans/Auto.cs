@@ -29,15 +29,15 @@ namespace BasicBankAppNum2.Loans
         public static bool AutoLoanApplication()
         {
             double monthlyIncome = annualIncome / 12;
-            if (monthlyIncome < 1500 || creditScore < 600)
+            if (monthlyIncome < 1500 || creditScore < 600 || loanOrigAmount > maxLoanAmount)
             {
                 return false;
             }
-            
+            return true;
             
         }
 
-        public static double MaxLoanAmountDetermination()
+        public static void MaxLoanAmountDetermination()
         {
             string loanWorthiness;
 
@@ -62,7 +62,17 @@ namespace BasicBankAppNum2.Loans
                 case "excellent":
                     double maxLoanPreInterest = ((annualIncome / 12) * .30) * loanTrm;
                     double interestTotal = interestRate * maxLoanPreInterest;
-                    return maxLoanPreInterest + interestTotal;
+                    maxLoanAmount = maxLoanPreInterest + interestTotal;
+                    break;
+                case "okay":
+                    double maxLoanPreInterest1 = ((annualIncome / 12) * .20) * loanTrm;
+                    double interestTotal1 = ((annualIncome / 12) * .20) * loanTrm;
+                    maxLoanAmount = maxLoanPreInterest1 + interestTotal1; 
+                    break;
+                default:
+                    double maxLoanPreInterest2 = ((annualIncome / 12) * .15) * loanTrm;
+                    double interestTotal2 = ((annualIncome / 12) * .15) * loanTrm;
+                    maxLoanAmount = interestTotal2 + maxLoanPreInterest2;
                     break;
             }
         }
