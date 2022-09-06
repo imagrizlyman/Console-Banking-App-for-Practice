@@ -98,7 +98,8 @@ namespace BasicBankAppNum2
                     ExistingAccountMenu();
                     break;
                 case "4":
-                    Console.WriteLine(accountLoggedIn.LoanList.ToString());
+                    CheckExistingLoans();
+                    ExistingAccountMenu();
                     break;
                 case "5":
                     Loan.LoanApplication();
@@ -168,5 +169,35 @@ namespace BasicBankAppNum2
             CustomerAccounts newAccount = new CustomerAccounts(fN, lN, dob, uN, pW);
             accountList.Add(newAccount);
         }
+        public static void CheckExistingLoans()
+        {
+            int loanSelection;
+            foreach (Loan loan in accountLoggedIn.LoanList)
+            {
+                Console.WriteLine(loan.LoanName);
+            }
+            Console.WriteLine("Would you like to manage any of these loans?");
+            string answer = Console.ReadLine().ToLower();
+            if (answer == "yes")
+            {
+                Console.WriteLine("Please select the loan you would like to manage: ");
+                int count = 1;
+                foreach (Loan loan in accountLoggedIn.LoanList)
+                {
+                    Console.WriteLine($"{count}: {loan.LoanName}");
+                    count++;
+                }
+                Console.WriteLine("Please enter the corresponding number for your selection: ");
+                loanSelection = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"The loan you selected was ${accountLoggedIn.LoanList[loanSelection].LoanName}");
+                Console.WriteLine("How can we help you with this loan?");
+                //Input new method here for "ManagingSelectedLoan"
+            }
+            else
+            {
+                ExistingAccountMenu();
+            }
+        }
+        //Create Method here for ManagingSelectedLoan.
     }
 }

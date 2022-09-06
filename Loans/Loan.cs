@@ -58,12 +58,19 @@ namespace BasicBankAppNum2.Loans
                     Auto.AutoLoanInformationCollection();
                     Auto.MaxLoanAmountDetermination();
                     Auto.AutoLoanEstablishment();
+                    CustomerAccounts.ExistingAccountMenu();
                     break;
                 case "mortgage":
+
+                    CustomerAccounts.ExistingAccountMenu();
                     break;
                 case "business":
+
+                    CustomerAccounts.ExistingAccountMenu();
                     break;
                 case "personal":
+
+                    CustomerAccounts.ExistingAccountMenu();
                     break;
                 default:
                     Console.WriteLine("Invalid Loan type selection, Please try again.");

@@ -78,7 +78,7 @@ namespace BasicBankAppNum2.Loans
         }
         public static void AutoLoanEstablishment()
         {
-            if (Auto.AutoLoanApplication())
+            if (AutoLoanApplication())
             {
                 Console.WriteLine("You are approved for the new Auto Loan!");
                 minimumPayment = (loanOrigAmount / loanTrm) + (interestRate * loanOrigAmount) / loanTrm;
