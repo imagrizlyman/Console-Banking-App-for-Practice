@@ -28,12 +28,12 @@ namespace BasicBankAppNum2.Loans
         
         public Loan(string loanTyp, string loanNme, double loanAmnt, double intRate, int loanTrm, double paymentamnt)
         {
-            loanType = loanTyp;
-            loanOriginationAmount = loanAmnt;
+            this.loanType = loanTyp;
+            this.LoanOriginationAmount = loanAmnt;
             interestRate = intRate;
-            loanTerm = loanTrm;
-            loanName = loanNme;
-            minimumPayment = paymentamnt;
+            this.LoanTerm = loanTrm;
+            this.LoanName = loanNme;
+            this.MinimumPayment = paymentamnt;
         }
         public double LoanBalance { get { return loanBalance; } set { loanBalance = value; } }
         public string LoanName { get; set; }
@@ -74,7 +74,6 @@ namespace BasicBankAppNum2.Loans
                     break;
                 default:
                     Console.WriteLine("Invalid Loan type selection, Please try again.");
-                    LoanTypeDetermination();
                     LoanApplication();
                     break;
             }

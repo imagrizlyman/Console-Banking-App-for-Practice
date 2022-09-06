@@ -22,6 +22,7 @@ namespace BasicBankAppNum2
         static string usernameEntry;
         static string passwordEntry;
         public static bool loggedInSuccess;
+        public static Loan selectedLoan;
         public static List<Loan> loanList = new List<Loan> { }; 
         public CustomerAccounts(string firstNme, string lastNme, string dob, string userNme, string pswrd)
         {
@@ -189,8 +190,9 @@ namespace BasicBankAppNum2
                 }
                 Console.WriteLine("Please enter the corresponding number for your selection: ");
                 loanSelection = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine($"The loan you selected was ${accountLoggedIn.LoanList[loanSelection].LoanName}");
+                Console.WriteLine($"The loan you selected was {accountLoggedIn.LoanList[loanSelection - 1].LoanName}");
                 Console.WriteLine("How can we help you with this loan?");
+                selectedLoan = accountLoggedIn.LoanList[loanSelection - 1];
                 //Input new method here for "ManagingSelectedLoan"
             }
             else
@@ -199,5 +201,6 @@ namespace BasicBankAppNum2
             }
         }
         //Create Method here for ManagingSelectedLoan.
+        
     }
 }
