@@ -16,6 +16,7 @@ namespace BasicBankAppNum2.Loans
 
         public static void AutoLoanInformationCollection()
         {
+            //Add .TryParse methods for numbers being collected.
             Console.WriteLine("Please enter the dollar amount you are requesting for your Auto loan:");
             loanOrigAmount = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Please enter the amount of whole months you would like for your loan term:");

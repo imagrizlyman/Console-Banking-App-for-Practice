@@ -11,7 +11,7 @@ namespace BasicBankAppNum2
 
     public class CustomerAccounts
     {
-        public static List<CustomerAccounts> accountList = new List<CustomerAccounts> { };
+        public static List<CustomerAccounts> accountList = new List<CustomerAccounts> ();
         public static CustomerAccounts? accountLoggedIn;
         string userName;
         string password;
@@ -23,7 +23,7 @@ namespace BasicBankAppNum2
         static string passwordEntry;
         public static bool loggedInSuccess;
         public static Loan selectedLoan;
-        public static List<Loan> loanList = new List<Loan> { }; 
+        public static List<Loan> loanList = new List<Loan>(); 
         public CustomerAccounts(string firstNme, string lastNme, string dob, string userNme, string pswrd)
         {
             firstName = firstNme;
@@ -122,8 +122,16 @@ namespace BasicBankAppNum2
         {
             Console.WriteLine("Please enter the amount you would like to deposit");
             string amountToDepositString = Console.ReadLine();
-            double amountToDeposit = Convert.ToDouble(amountToDepositString);
-            accountLoggedIn.Balance += amountToDeposit;
+            if (double.TryParse(amountToDepositString, out double result))
+            {
+                double amountToDeposit = result;
+                accountLoggedIn.Balance += amountToDeposit;
+            }
+            else
+            {
+                Console.WriteLine("Invalid entry, please enter numbers only..");
+                ExistingAccountDeposit();
+            }
             Console.WriteLine($"Thank you for your deposit, your new balance is ${accountLoggedIn.Balance}.");
         }
 
@@ -131,8 +139,16 @@ namespace BasicBankAppNum2
         {
             Console.WriteLine("Please enter the amount you would like to withdraw");
             string amountTowithdrawalString = Console.ReadLine();
-            double amountTowithdrawal = Convert.ToDouble(amountTowithdrawalString);
-            accountLoggedIn.Balance -= amountTowithdrawal;
+            if (double.TryParse (amountTowithdrawalString, out double result))
+            {
+                double amountToWithdrawal = result;
+                accountLoggedIn.Balance -= amountToWithdrawal;
+            }
+            else
+            {
+                Console.WriteLine("Invalid entry, please enter numbers only..");
+                ExistingAccountwithdrawal();
+            }
             Console.WriteLine($"Your withdrawal has completed. Your new balance is ${accountLoggedIn.Balance}");
         }
         public static void LoggingIN()
@@ -144,14 +160,12 @@ namespace BasicBankAppNum2
             Login();
             if (loggedInSuccess)
             {
-                //Console.WriteLine("You did it!");
                 ExistingAccountMenu();
             }
             else
             {
                 Console.WriteLine("Incorrect login credentials.");
                 LoggingIN();
-                //Console.WriteLine(CustomerAccounts.accountLoggedIn.FirstName);
             }
         }
         public static void NewAccountCreation()

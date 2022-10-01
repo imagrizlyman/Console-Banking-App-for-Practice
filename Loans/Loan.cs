@@ -79,6 +79,10 @@ namespace BasicBankAppNum2.Loans
             }
             return true;
         }
+        public static void ManageSelectedLoan()
+        {
+
+        }
 
         
 
