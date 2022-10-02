@@ -11,26 +11,26 @@ namespace BasicBankAppNum2.Loans
 
     public class Loan
     {
-        public string loanType;
-        public static string loanName;
-        public double loanOriginationAmount;
-        public static double interestRate;
-        public int loanTerm;
+        private string loanType;
+        private static string loanName;
+        private double loanOriginationAmount;
+        private double interestRate;
+        private int loanTerm;
         public double loanBalance = loanOrigAmount;
-        public static double minimumPayment;
-        public static double loanOrigAmount;
-        public static int loanTrm;
-        public static double annualIncome;
-        public static int creditScore;
-        public static string loanTyp;
-        public static bool loanDecision;
-        public static double maxLoanAmount;
+        private static double minimumPayment;
+        private static double loanOrigAmount;
+        private static int loanTrm;
+        private static double annualIncome;
+        private static int creditScore;
+        private static string loanTyp;
+        private static bool loanDecision;
+        private static double maxLoanAmount;
         
         public Loan(string loanTyp, string loanNme, double loanAmnt, double intRate, int loanTrm, double paymentamnt)
         {
             this.loanType = loanTyp;
             this.LoanOriginationAmount = loanAmnt;
-            interestRate = intRate;
+            this.interestRate = intRate;
             this.LoanTerm = loanTrm;
             this.LoanName = loanNme;
             this.MinimumPayment = paymentamnt;
