@@ -11,26 +11,26 @@ namespace BasicBankAppNum2.Loans
 
     public class Loan
     {
-        private string loanType;
-        private static string loanName;
-        private double loanOriginationAmount;
-        private double interestRate;
-        private int loanTerm;
-        private double loanBalance = loanOrigAmount;
-        private static double minimumPayment;
-        private static double loanOrigAmount;
-        private static int loanTrm;
-        private static double annualIncome;
-        private static int creditScore;
-        private static string loanTyp;
-        private static bool loanDecision;
-        private static double maxLoanAmount;
+        internal string loanType;
+        internal static string loanName;
+        internal double loanOriginationAmount;
+        internal static double interestRate;
+        internal int loanTerm;
+        internal double loanBalance = loanOrigAmount;
+        internal static double minimumPayment;
+        internal static double loanOrigAmount;
+        internal static int loanTrm;
+        internal static double annualIncome;
+        internal static int creditScore;
+        internal static string loanTyp;
+        internal static bool loanDecision;
+        internal static double maxLoanAmount;
         
         public Loan(string loanTyp, string loanNme, double loanAmnt, double intRate, int loanTrm, double paymentamnt)
         {
             this.loanType = loanTyp;
             this.LoanOriginationAmount = loanAmnt;
-            this.interestRate = intRate;
+            interestRate = intRate;
             this.LoanTerm = loanTrm;
             this.LoanName = loanNme;
             this.MinimumPayment = paymentamnt;
@@ -46,7 +46,7 @@ namespace BasicBankAppNum2.Loans
         {
             Console.WriteLine("Please Enter the type of loan you are seeking today. (Auto, Mortgage, Business, or Personal)");
             loanTyp = Console.ReadLine().ToLower();
-            if (loanTyp != "auto" || loanTyp != "mortgage" || loanTyp != "personal" || loanTyp != "business")
+            if (loanTyp != "auto" && loanTyp != "mortgage" && loanTyp != "personal" && loanTyp != "business")
             {
                 LoanTypeDetermination();
             }
