@@ -16,7 +16,7 @@ namespace BasicBankAppNum2.Loans
         private double loanOriginationAmount;
         private double interestRate;
         private int loanTerm;
-        public double loanBalance = loanOrigAmount;
+        private double loanBalance = loanOrigAmount;
         private static double minimumPayment;
         private static double loanOrigAmount;
         private static int loanTrm;
@@ -46,6 +46,10 @@ namespace BasicBankAppNum2.Loans
         {
             Console.WriteLine("Please Enter the type of loan you are seeking today. (Auto, Mortgage, Business, or Personal)");
             loanTyp = Console.ReadLine().ToLower();
+            if (loanTyp != "auto" || loanTyp != "mortgage" || loanTyp != "personal" || loanTyp != "business")
+            {
+                LoanTypeDetermination();
+            }
         }
 
         public static bool LoanApplication()
