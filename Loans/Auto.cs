@@ -16,15 +16,52 @@ namespace BasicBankAppNum2.Loans
 
         public static void AutoLoanInformationCollection()
         {
-            //Add .TryParse methods for numbers being collected.
             Console.WriteLine("Please enter the dollar amount you are requesting for your Auto loan:");
-            loanOrigAmount = Convert.ToDouble(Console.ReadLine());
+            string loanOrigAmountString = Console.ReadLine();
+            if (double.TryParse(loanOrigAmountString, out double result))
+            {
+                loanOrigAmount = result;
+            }
+            else
+            {
+                Console.WriteLine("Invalid entry, please enter numbers only..");
+                AutoLoanInformationCollection();
+            }
             Console.WriteLine("Please enter the amount of whole months you would like for your loan term:");
-            loanTrm = Convert.ToInt16(Console.ReadLine());
+            string loanTrmString = Console.ReadLine();
+            if (int.TryParse(loanTrmString, out int result1))
+            {
+                loanTrm = result1;
+            }
+            else
+            {
+                Console.WriteLine("Invalid entry, please enter numbers only..");
+                AutoLoanInformationCollection();
+            }
             Console.WriteLine("Please enter your gross annual income:");
-            annualIncome = Convert.ToDouble(Console.ReadLine());
+            string annualIncomeString = Console.ReadLine();
+            if (double.TryParse(annualIncomeString, out double result2))
+            {
+                annualIncome = result2;
+            }
+            else
+            {
+                Console.WriteLine("Invalid entry, please enter numbers only..");
+                AutoLoanInformationCollection();
+            }
             Console.WriteLine("Please enter your Credit Score:");
-            creditScore = Convert.ToInt16(Console.ReadLine());
+            string creditScoreString = Console.ReadLine();
+            if (int.TryParse(creditScoreString, out int result3))
+            {
+                creditScore = result1;
+            }
+            else
+            {
+                Console.WriteLine("Invalid entry, please enter numbers only..");
+                AutoLoanInformationCollection();
+            }
+
+
         }
 
         public static bool AutoLoanApplication()
