@@ -83,10 +83,170 @@ namespace BasicBankAppNum2.Loans
             }
             return true;
         }
+        public static void CheckExistingLoans()
+        {
+            int loanSelection;
+            foreach (Loan loan in CustomerAccounts.accountLoggedIn.LoanList)
+            {
+                Console.WriteLine(loan.LoanName);
+            }
+            Console.WriteLine("Would you like to manage any of these loans?");
+            string answer = Console.ReadLine().ToLower();
+            if (answer == "yes")
+            {
+                Console.WriteLine("Please select the loan you would like to manage: ");
+                int count = 1;
+                foreach (Loan loan in CustomerAccounts.accountLoggedIn.LoanList)
+                {
+                    Console.WriteLine($"{count}: {loan.LoanName}");
+                    count++;
+                }
+                Console.WriteLine("Please enter the corresponding number for your selection: ");
+                string loanSelectionString = Console.ReadLine();
+                if (int.TryParse(loanSelectionString, out loanSelection))
+                {
+                    loanSelection = loanSelection;
+                }
+                else
+                {
+                    CheckExistingLoans();
+                }
+                Console.WriteLine($"The loan you selected was {CustomerAccounts.accountLoggedIn.LoanList[loanSelection - 1].LoanName}");
+                CustomerAccounts.selectedLoan = CustomerAccounts.accountLoggedIn.LoanList[loanSelection - 1];
+                ManageSelectedLoan();
+                //Input new method here for "ManagingSelectedLoan"
+            }
+            else
+            {
+                CustomerAccounts.ExistingAccountMenu();
+            }
+        }
         public static void ManageSelectedLoan()
         {
-
+            SelectedLoanMenu();
+            string selection = Console.ReadLine();
+            switch (selection)
+            {
+                case "1":
+                    Console.WriteLine($"Your current balance on the loan: {CustomerAccounts.selectedLoan.LoanName} is ${CustomerAccounts.selectedLoan.LoanBalance}");
+                    Console.WriteLine("Submit any key to return to the Loan Menu..");
+                    string continueChoice = Console.ReadLine();
+                    if (continueChoice != null)
+                    {
+                        ManageSelectedLoan();
+                    }
+                    break;
+                case "2":
+                    MakeLoanPayment();
+                    Console.WriteLine("Submit any key to return to the Loan Menu..");
+                    continueChoice = Console.ReadLine();
+                    if (continueChoice != null)
+                    {
+                        ManageSelectedLoan();
+                    }
+                    break;
+                case "3":
+                    Console.WriteLine("Submit any key to return to the Loan Menu..");
+                    continueChoice = Console.ReadLine();
+                    if (continueChoice != null)
+                    {
+                        ManageSelectedLoan();
+                    }
+                    break;
+                case "4":
+                    Console.WriteLine("Submit any key to return to the Loan Menu..");
+                    continueChoice = Console.ReadLine();
+                    if (continueChoice != null)
+                    {
+                        ManageSelectedLoan();
+                    }
+                    break;
+                case "5":
+                    CustomerAccounts.ExistingAccountMenu();
+                    break;
+            }
         }
+        public static void SelectedLoanMenu()
+        {
+            Console.WriteLine("How can we help you with this loan?");
+            Console.WriteLine("1. Check current Loan Balance");
+            Console.WriteLine("2. Make a Payment on your Loan");
+            Console.WriteLine("3. Check loan origination amount");
+            Console.WriteLine("4. Check current interest rate");
+            Console.WriteLine("5. Return to Account Menu");
+        }
+        public static void MakeLoanPayment()
+        {
+            Console.WriteLine($"Your minimum payment for {CustomerAccounts.selectedLoan.LoanName} is ${CustomerAccounts.selectedLoan.MinimumPayment}");
+            Console.WriteLine();
+            Console.WriteLine("Would you like to make the minimum payment or a custom amount? (Enter 'minimum' to make the minimum, or 'custom' for a different amount): ");
+            string choice = Console.ReadLine().ToLower();
+            if (choice == "minimum")
+            {
+                if (CustomerAccounts.accountLoggedIn.Balance >= CustomerAccounts.selectedLoan.MinimumPayment)
+                {
+                    CustomerAccounts.selectedLoan.LoanBalance -= CustomerAccounts.selectedLoan.MinimumPayment;
+                    CustomerAccounts.accountLoggedIn.Balance -= CustomerAccounts.selectedLoan.MinimumPayment;
+                    Console.WriteLine($"Your payment of {CustomerAccounts.selectedLoan.MinimumPayment} was applied succesfully.");
+                    Console.WriteLine($"Your new loan balance is now {CustomerAccounts.selectedLoan.LoanBalance}");
+                    Console.WriteLine("Submit any key to return to the Loan Menu..");
+                    string continueChoice = Console.ReadLine();
+                    if (continueChoice != null)
+                    {
+                        ManageSelectedLoan();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("it appears you do not have enough funds in your bank account to make the minimum payment. Please add more funds to your account and try again..");
+                    ManageSelectedLoan();
+                }
+            }
+            else if (choice == "custom")
+            {
+                Console.WriteLine($"Please enter the custom amount you would like to pay today, Please remember it would need to greater than or equal to your minimum payment amount of {CustomerAccounts.selectedLoan.MinimumPayment}");
+                string customPaymentString = Console.ReadLine();
+                if (double.TryParse(customPaymentString, out double result))
+                {
+                    double paymentAmount = result;
+                    if (CustomerAccounts.accountLoggedIn.Balance >= paymentAmount)
+                    {
+                        CustomerAccounts.selectedLoan.LoanBalance -= paymentAmount;
+                        CustomerAccounts.accountLoggedIn.Balance -= paymentAmount;
+                        Console.WriteLine($"Your payment of {paymentAmount} was applied succesfully.");
+                        Console.WriteLine($"Your new loan balance is now {CustomerAccounts.selectedLoan.LoanBalance}");
+                        Console.WriteLine("Submit any key to return to the Loan Menu..");
+                        string continueChoice = Console.ReadLine();
+                        if (continueChoice != null)
+                        {
+                            ManageSelectedLoan();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("it appears you do not have enough funds in your account to make this payment, please add more funds and try again..");
+                        ManageSelectedLoan();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid entry, please try again..");
+                    MakeLoanPayment();
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Invalid entry, try again..");
+                MakeLoanPayment();
+            }
+        }
+        
+        
+        
+
+        
 
         
 

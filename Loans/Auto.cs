@@ -53,7 +53,7 @@ namespace BasicBankAppNum2.Loans
             string creditScoreString = Console.ReadLine();
             if (int.TryParse(creditScoreString, out int result3))
             {
-                creditScore = result1;
+                creditScore = result3;
             }
             else
             {
