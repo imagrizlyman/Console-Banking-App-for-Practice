@@ -87,7 +87,9 @@ namespace BasicBankAppNum2
             switch (Program.userChoice)
             {
                 case "1":
-                    Console.WriteLine(accountLoggedIn.Balance.ToString());
+                    Console.WriteLine($"Your current Balance is ${accountLoggedIn.Balance.ToString()}");
+                    Console.WriteLine("Submit any key to continue..");
+                    string continueChoice = Console.ReadLine();
                     ExistingAccountMenu();
                     break;
                 case "2":
@@ -133,6 +135,8 @@ namespace BasicBankAppNum2
                 ExistingAccountDeposit();
             }
             Console.WriteLine($"Thank you for your deposit, your new balance is ${accountLoggedIn.Balance}.");
+            Console.WriteLine("Submit any key to continue..");
+            string continueChoice = Console.ReadLine();
         }
 
         private static void ExistingAccountwithdrawal()
@@ -150,6 +154,9 @@ namespace BasicBankAppNum2
                 ExistingAccountwithdrawal();
             }
             Console.WriteLine($"Your withdrawal has completed. Your new balance is ${accountLoggedIn.Balance}");
+            Console.WriteLine("Submit any key to continue..");
+            string continueChoice = Console.ReadLine();
+            
         }
         public static void LoggingIN()
         {

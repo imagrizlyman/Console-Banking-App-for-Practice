@@ -101,6 +101,7 @@ namespace BasicBankAppNum2.Loans
                     Console.WriteLine($"{count}: {loan.LoanName}");
                     count++;
                 }
+                returnPoint:
                 Console.WriteLine("Please enter the corresponding number for your selection: ");
                 string loanSelectionString = Console.ReadLine();
                 if (int.TryParse(loanSelectionString, out loanSelection))
@@ -110,11 +111,12 @@ namespace BasicBankAppNum2.Loans
                 else
                 {
                     CheckExistingLoans();
+                    goto returnPoint;
                 }
                 Console.WriteLine($"The loan you selected was {CustomerAccounts.accountLoggedIn.LoanList[loanSelection - 1].LoanName}");
                 CustomerAccounts.selectedLoan = CustomerAccounts.accountLoggedIn.LoanList[loanSelection - 1];
                 ManageSelectedLoan();
-                //Input new method here for "ManagingSelectedLoan"
+                
             }
             else
             {
