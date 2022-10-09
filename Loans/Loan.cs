@@ -35,6 +35,10 @@ namespace BasicBankAppNum2.Loans
             this.LoanName = loanNme;
             this.MinimumPayment = paymentamnt;
         }
+        public Loan()
+        {
+
+        }
         public double LoanBalance { get { return loanBalance; } set { loanBalance = value; } }
         public string LoanName { get; set; }
         public double LoanOriginationAmount { get { return loanOriginationAmount; } set { } }
