@@ -13,3 +13,11 @@ C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\obj\Debug\net6.0\refint\BasicBan
 C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\obj\Debug\net6.0\BasicBankAppNum2.pdb
 C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\obj\Debug\net6.0\BasicBankAppNum2.genruntimeconfig.cache
 C:\Users\austi\Desktop\C# Code\BasicBankAppNum2\obj\Debug\net6.0\ref\BasicBankAppNum2.dll
+C:\Users\cynth\Desktop\AustinsCode\ConsoleBankingApp\obj\Debug\net6.0\BasicBankAppNum2.csproj.AssemblyReference.cache
+C:\Users\cynth\Desktop\AustinsCode\ConsoleBankingApp\obj\Debug\net6.0\BasicBankAppNum2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cynth\Desktop\AustinsCode\ConsoleBankingApp\obj\Debug\net6.0\BasicBankAppNum2.AssemblyInfoInputs.cache
+C:\Users\cynth\Desktop\AustinsCode\ConsoleBankingApp\obj\Debug\net6.0\BasicBankAppNum2.AssemblyInfo.cs
+C:\Users\cynth\Desktop\AustinsCode\ConsoleBankingApp\obj\Debug\net6.0\BasicBankAppNum2.csproj.CoreCompileInputs.cache
+C:\Users\cynth\Desktop\AustinsCode\ConsoleBankingApp\obj\Debug\net6.0\BasicBankAppNum2.dll
+C:\Users\cynth\Desktop\AustinsCode\ConsoleBankingApp\obj\Debug\net6.0\refint\BasicBankAppNum2.dll
+C:\Users\cynth\Desktop\AustinsCode\ConsoleBankingApp\obj\Debug\net6.0\BasicBankAppNum2.pdb
