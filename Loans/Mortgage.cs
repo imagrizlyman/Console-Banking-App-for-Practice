@@ -49,11 +49,23 @@ namespace BasicBankAppNum2.Loans
                 Console.WriteLine("Invalid entry, please enter numbers only..");
                 MortgageLoanInformationCollection();
             }
-            Console.WriteLine("Please enter the amount of whole months you would like for your loan term:");
+            resetPoint:
+            Console.WriteLine("Please enter the amount of whole years you would like for your fixed rate Mortgage term: (30 or 15 only)");
             string loanTrmString = Console.ReadLine();
             if (int.TryParse(loanTrmString, out int result1))
             {
-                loanTrm = result1;
+                if (result1 != 30 && result1 != 15)
+                {
+                    Console.WriteLine("Please only enter 30, or 15, for these are currently the only terms we offer.");
+                    Console.WriteLine("Please enter any key to continue..");
+                    Console.ReadLine();
+                    goto resetPoint;
+                }
+                else
+                {
+                    loanTrm = result1;
+                }
+                
             }
             else
             {
