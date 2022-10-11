@@ -78,7 +78,7 @@ namespace BasicBankAppNum2
             Console.WriteLine("4. Check your active loans");
             Console.WriteLine("5. Apply for a loan");
             Console.WriteLine("6. Log Out & Return to the Main Menu");
-            Program.userChoice = Console.ReadLine();
+            Program.userChoice = Console.ReadLine() ?? string.Empty;
             ExistingAccountSelection();
 
         }
@@ -192,7 +192,7 @@ namespace BasicBankAppNum2
             accountList.Add(newAccount);
         }
         
-        //Create Method here for ManagingSelectedLoan.
+        
         
     }
 }
