@@ -40,34 +40,71 @@ namespace BasicBankAppNum2
         public double Balance { get { return balance; } set { balance = value; } }
         public List<Loan> LoanList { get { return loanList; } set { loanList = value; } }
 
-
-
-
-
-        public static void Login()
+        
+        public static void LoggingIn()
         {
-            foreach (CustomerAccounts account in accountList)
+            Console.WriteLine("Please enter your Username");
+            usernameEntry = Console.ReadLine();
+            if (accountList.Count > 0)
             {
-                if (usernameEntry == account.UserName)
+                foreach (CustomerAccounts account in accountList)
                 {
-                    CustomerAccounts accountToLog = account;
-                    if (passwordEntry == accountToLog.Password)
+                    bool accountNotFound = false;
+                    if (usernameEntry == account.UserName)
                     {
-                        accountLoggedIn = accountToLog;
-                        loggedInSuccess = true;
+                        accountNotFound = true;
+                        CustomerAccounts accountToLog = account;
+                        Console.WriteLine("Thank you, now please enter your password.");
+                        passwordEntry = Console.ReadLine();
+                        if (passwordEntry == accountToLog.Password)
+                        {
+                            accountLoggedIn = accountToLog;
+                            ExistingAccountMenu();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Incorrect Password..");
+                            Console.WriteLine("Press any key to continue..");
+                            Console.ReadLine();
+                            LoggingIn();
+                        }
                     }
-                    else
+                    
+                    /*else if (usernameEntry != account.UserName)
                     {
-                        loggedInSuccess = false;
-                    }
-
+                        Console.WriteLine("We do not have an account by that username..");
+                        Console.WriteLine();
+                        Console.WriteLine("Would you like to try again? (yes or no)");
+                        string decision = Console.ReadLine();
+                        if (decision.ToLower() == "yes")
+                        {
+                            LoggingIn();
+                        }
+                        else
+                        {
+                            Program.BankIntro();
+                            Program.MainMenuSelection();
+                        }
+                    }*/
+                    
+                }
+            }
+            else
+            {
+                Console.WriteLine("We do not have an account by that username..");
+                Console.WriteLine();
+                Console.WriteLine("Would you like to try again? (yes or no)");
+                string decision2 = Console.ReadLine();
+                if (decision2.ToLower() == "yes")
+                {
+                    LoggingIn();
                 }
                 else
                 {
-                    loggedInSuccess = false;
+                    Program.BankIntro();
+                    Program.MainMenuSelection();
                 }
             }
-
         }
         public static void ExistingAccountMenu()
         {
@@ -158,23 +195,7 @@ namespace BasicBankAppNum2
             string continueChoice = Console.ReadLine();
             
         }
-        public static void LoggingIN()
-        {
-            Console.WriteLine("Please enter your Username");
-            usernameEntry = Console.ReadLine();
-            Console.WriteLine("Thank you, now please enter your password.");
-            passwordEntry = Console.ReadLine();
-            Login();
-            if (loggedInSuccess)
-            {
-                ExistingAccountMenu();
-            }
-            else
-            {
-                Console.WriteLine("Incorrect login credentials.");
-                LoggingIN();
-            }
-        }
+        
         public static void NewAccountCreation()
         {
             Console.WriteLine("Great!, Lets gather the information we need to establish your new account with us.");

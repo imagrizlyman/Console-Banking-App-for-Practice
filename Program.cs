@@ -12,11 +12,11 @@ namespace BasicBankAppNum2
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
             BankIntro();
-            do
+            while (appIsRunning)
             {
                 MainMenuSelection();
             }
-            while (appIsRunning);
+            
         }
 
         public static void BankIntro()
@@ -44,17 +44,13 @@ namespace BasicBankAppNum2
                     NewChoice();
                     break;
                 case "2":
-                    CustomerAccounts.LoggingIN();
+                    CustomerAccounts.LoggingIn();
                     NewChoice();
                     break;
                 case "3":
-                    appIsRunning = false;
+                    Environment.Exit(0);
                     break;
-                case "4":
-                    Console.WriteLine(CustomerAccounts.accountList.Count());
-                    NewChoice();
-                    break;
-                
+
                 default:
                     Console.WriteLine("Please enter a valid selection.");
                     userChoice = Console.ReadLine();
