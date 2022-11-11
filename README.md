@@ -1,10 +1,12 @@
-# Console Banking App for practice
-## Features currently included:
-- Account creation system
-- Login system
-- Basic banking functions E.g. Deposit, Withdrawal, Balance checking functions.
-- Loan application/ screening process
-- Loan creation / Loan management system
-## Features under development
-- Additonal Loan options
-- storage system
+# Hackers Bank application
+## Description:
+This project is a console application that I have designed to provide most of the features and functionality you would expect from a typical banking application you would use for your own, real bank. The application allows the user to create a bank account or multiple  bank accounts with all having different logins. The user is then able to log into any of the accounts they created and each account has its own specific data, such as balance, and loans. You can have multiple accounts with each of them having their own specific account balances and loans etc. Once you have an account and are logged into it, you can deposit & withdrawl fake funds, Apply for multiple auto loans, and then of course manage the loans. With the loan management system, You do have to first apply for a loan and I have used some general auto loan averages to create the approval requirements and to determine interest rates and payment amounts. If you are approved for a loan, you have the choice to accept the loan with the minimum payment or decline it. If you accept it, you can then manage the loan by making payments that have to both meet the minimum payment requirement that was established in the application process, and have the amount of funds you want to pay available in your bank account balance. You can then check your loan balance, your interest rate, and your minimum payment amount. If you say, make an account, deposit funds, apply, get approved, and accept a loan, make payments on it, and or manipulate your account balance then log out of your account to return to the main menu and either create and-or log into multiple other accounts and do all those things with them too. When you come back to the example account I mentioned, everything you done, including your loan info, your balances etc. will have remained the same, unchanged from where you left it. That is as long as the application is running. I was never able to get the time to finish a solution to save the data so that you could fully close the application and then launch it again and your info be saved. So anything you do in the app will be saved as long as your are in the app, but once you close the application and come back it will all be erased.   
+
+## Project Feature Requirements included in the app:
+- Implement a “master loop” console application where the user can repeatedly enter commands/perform actions, including choosing to exit the program
+- Create an additional class which inherits one or more properties from its parent
+- Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program
+- Build a conversion tool that converts user input to another type and displays it (ex: converts cups to grams) --- In my application, I take input from the user in the string type, I convert their string entry to a double to then be able to manipulate the number they enter, whether it be adding, subtracting etc. I then display the newly formed number back to the user. This feature is most apparent with the bank account balance system. +
+
+## Special Instructions:
+- The only thing to mention here would be to remind the user that once you close the application, the account or accounts you created and all their data, like balances, loans, etc will be lost. The data is not saved outside of the program so it only last while it is running. 
