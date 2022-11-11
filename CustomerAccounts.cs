@@ -49,10 +49,10 @@ namespace BasicBankAppNum2
             {
                 foreach (CustomerAccounts account in accountList)
                 {
-                    bool accountNotFound = false;
+                    //bool accountNotFound = false;
                     if (usernameEntry == account.UserName)
                     {
-                        accountNotFound = true;
+                        //accountNotFound = true;
                         CustomerAccounts accountToLog = account;
                         Console.WriteLine("Thank you, now please enter your password.");
                         passwordEntry = Console.ReadLine();
@@ -70,23 +70,20 @@ namespace BasicBankAppNum2
                         }
                     }
                     
-                    /*else if (usernameEntry != account.UserName)
-                    {
-                        Console.WriteLine("We do not have an account by that username..");
-                        Console.WriteLine();
-                        Console.WriteLine("Would you like to try again? (yes or no)");
-                        string decision = Console.ReadLine();
-                        if (decision.ToLower() == "yes")
-                        {
-                            LoggingIn();
-                        }
-                        else
-                        {
-                            Program.BankIntro();
-                            Program.MainMenuSelection();
-                        }
-                    }*/
-                    
+                }
+
+                Console.WriteLine("We do not have an account by that username..");
+                Console.WriteLine();
+                Console.WriteLine("Would you like to try again? (yes or no)");
+                string decision = Console.ReadLine();
+                if (decision.ToLower() == "yes")
+                {
+                    LoggingIn();
+                }
+                else
+                {
+                    Program.BankIntro();
+                    Program.MainMenuSelection();
                 }
             }
             else

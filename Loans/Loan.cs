@@ -48,9 +48,10 @@ namespace BasicBankAppNum2.Loans
 
         public static void LoanTypeDetermination()
         {
-            Console.WriteLine("Please Enter the type of loan you are seeking today. (Auto, Mortgage, Business, or Personal)");
+            Console.WriteLine("Please Enter the type of loan you are seeking today. (Auto)");
+            Console.WriteLine("We do apologize but currently we are only offering auto loans.. Please just enter auto if that is what you would like..");
             loanTyp = Console.ReadLine().ToLower();
-            if (loanTyp != "auto" && loanTyp != "mortgage" && loanTyp != "personal" && loanTyp != "business")
+            if (loanTyp != "auto")
             {
                 LoanTypeDetermination();
             }
@@ -90,41 +91,51 @@ namespace BasicBankAppNum2.Loans
         public static void CheckExistingLoans()
         {
             int loanSelection;
-            foreach (Loan loan in CustomerAccounts.accountLoggedIn.LoanList)
+            if (CustomerAccounts.accountLoggedIn.LoanList.Count > 0)
             {
-                Console.WriteLine(loan.LoanName);
-            }
-            Console.WriteLine("Would you like to manage any of these loans?");
-            string answer = Console.ReadLine().ToLower();
-            if (answer == "yes")
-            {
-                Console.WriteLine("Please select the loan you would like to manage: ");
-                int count = 1;
                 foreach (Loan loan in CustomerAccounts.accountLoggedIn.LoanList)
                 {
-                    Console.WriteLine($"{count}: {loan.LoanName}");
-                    count++;
+                    Console.WriteLine(loan.LoanName);
                 }
-                returnPoint:
-                Console.WriteLine("Please enter the corresponding number for your selection: ");
-                string loanSelectionString = Console.ReadLine();
-                if (int.TryParse(loanSelectionString, out loanSelection))
+                Console.WriteLine("Would you like to manage any of these loans?");
+                string answer = Console.ReadLine().ToLower();
+                if (answer == "yes")
                 {
-                    loanSelection = loanSelection;
+                    Console.WriteLine("Please select the loan you would like to manage: ");
+                    int count = 1;
+                    foreach (Loan loan in CustomerAccounts.accountLoggedIn.LoanList)
+                    {
+                        Console.WriteLine($"{count}: {loan.LoanName}");
+                        count++;
+                    }
+                returnPoint:
+                    Console.WriteLine("Please enter the corresponding number for your selection: ");
+                    string loanSelectionString = Console.ReadLine();
+                    if (int.TryParse(loanSelectionString, out loanSelection))
+                    {
+                        loanSelection = loanSelection;
+                    }
+                    else
+                    {
+                        CheckExistingLoans();
+                        goto returnPoint;
+                    }
+                    Console.WriteLine($"The loan you selected was {CustomerAccounts.accountLoggedIn.LoanList[loanSelection - 1].LoanName}");
+                    CustomerAccounts.selectedLoan = CustomerAccounts.accountLoggedIn.LoanList[loanSelection - 1];
+                    ManageSelectedLoan();
+
                 }
                 else
                 {
-                    CheckExistingLoans();
-                    goto returnPoint;
+                    CustomerAccounts.ExistingAccountMenu();
                 }
-                Console.WriteLine($"The loan you selected was {CustomerAccounts.accountLoggedIn.LoanList[loanSelection - 1].LoanName}");
-                CustomerAccounts.selectedLoan = CustomerAccounts.accountLoggedIn.LoanList[loanSelection - 1];
-                ManageSelectedLoan();
-                
             }
             else
             {
-                CustomerAccounts.ExistingAccountMenu();
+                Console.WriteLine("It appears that currently you do not hold any active loans with us.");
+                Console.WriteLine("Feel free to apply for a loan!");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadLine();
             }
         }
         public static void ManageSelectedLoan()
@@ -152,6 +163,7 @@ namespace BasicBankAppNum2.Loans
                     }
                     break;
                 case "3":
+                    Console.WriteLine($"Your current interest rate is %{CustomerAccounts.selectedLoan.InterestRate}");
                     Console.WriteLine("Submit any key to return to the Loan Menu..");
                     continueChoice = Console.ReadLine();
                     if (continueChoice != null)
@@ -160,14 +172,6 @@ namespace BasicBankAppNum2.Loans
                     }
                     break;
                 case "4":
-                    Console.WriteLine("Submit any key to return to the Loan Menu..");
-                    continueChoice = Console.ReadLine();
-                    if (continueChoice != null)
-                    {
-                        ManageSelectedLoan();
-                    }
-                    break;
-                case "5":
                     CustomerAccounts.ExistingAccountMenu();
                     break;
             }
@@ -177,9 +181,8 @@ namespace BasicBankAppNum2.Loans
             Console.WriteLine("How can we help you with this loan?");
             Console.WriteLine("1. Check current Loan Balance");
             Console.WriteLine("2. Make a Payment on your Loan");
-            Console.WriteLine("3. Check loan origination amount");
-            Console.WriteLine("4. Check current interest rate");
-            Console.WriteLine("5. Return to Account Menu");
+            Console.WriteLine("3. Check current interest rate");
+            Console.WriteLine("4. Return to Account Menu");
         }
         public static void MakeLoanPayment()
         {
@@ -216,7 +219,7 @@ namespace BasicBankAppNum2.Loans
                 if (double.TryParse(customPaymentString, out double result))
                 {
                     double paymentAmount = result;
-                    if (CustomerAccounts.accountLoggedIn.Balance >= paymentAmount)
+                    if (CustomerAccounts.accountLoggedIn.Balance >= paymentAmount && paymentAmount >= CustomerAccounts.selectedLoan.MinimumPayment)
                     {
                         CustomerAccounts.selectedLoan.LoanBalance -= paymentAmount;
                         CustomerAccounts.accountLoggedIn.Balance -= paymentAmount;
@@ -229,9 +232,14 @@ namespace BasicBankAppNum2.Loans
                             ManageSelectedLoan();
                         }
                     }
-                    else
+                    else if (CustomerAccounts.accountLoggedIn.Balance < paymentAmount)
                     {
                         Console.WriteLine("it appears you do not have enough funds in your account to make this payment, please add more funds and try again..");
+                        ManageSelectedLoan();
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Your custom payment must be at least ${CustomerAccounts.selectedLoan.MinimumPayment}");
                         ManageSelectedLoan();
                     }
                 }
@@ -257,7 +265,6 @@ namespace BasicBankAppNum2.Loans
         
 
 
-        /* FOR MAKING LOAN PAYMENTS, MAKE IT TO WHERE YOU HAVE TO PAY FROM YOUR BALANCE
-            ALSO MAKE THE PAYMENT BE A MINIMUM PAYMENT AMOUNT OR ABOVE*/
+        
     }
 }
