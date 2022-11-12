@@ -41,6 +41,8 @@ namespace BasicBankAppNum2
         public List<Loan> LoanList { get { return loanList; } set { loanList = value; } }
 
         
+
+        //this is the extensive method used for logging into an existing account
         public static void LoggingIn()
         {
             Console.WriteLine("Please enter your Username");
@@ -103,6 +105,8 @@ namespace BasicBankAppNum2
                 }
             }
         }
+
+        //This is the menu presented when logged in
         public static void ExistingAccountMenu()
         {
             Console.WriteLine("How can we help you with your account?");
@@ -116,6 +120,7 @@ namespace BasicBankAppNum2
             ExistingAccountSelection();
 
         }
+        //this is where the users selection is put into play from the existing account menu
         public static void ExistingAccountSelection()
         {
             switch (Program.userChoice)
@@ -153,7 +158,7 @@ namespace BasicBankAppNum2
                     break;
             }
         }
-
+        //This is the method for making a deposit
         private static void ExistingAccountDeposit()
         {
             Console.WriteLine("Please enter the amount you would like to deposit");
@@ -172,7 +177,7 @@ namespace BasicBankAppNum2
             Console.WriteLine("Submit any key to continue..");
             string continueChoice = Console.ReadLine();
         }
-
+        //this is the method for making a withdrawl
         private static void ExistingAccountwithdrawal()
         {
             Console.WriteLine("Please enter the amount you would like to withdraw");
@@ -192,7 +197,7 @@ namespace BasicBankAppNum2
             string continueChoice = Console.ReadLine();
             
         }
-        
+        //This is the method for creating a new account
         public static void NewAccountCreation()
         {
             Console.WriteLine("Great!, Lets gather the information we need to establish your new account with us.");

@@ -8,9 +8,11 @@ namespace BasicBankAppNum2
         
         static void Main(string[] args)
         {
-            Console.BackgroundColor = ConsoleColor.DarkGray;
+            //Sets the color of the console
+            Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Green;
+            //entry into the program
             BankIntro();
             while (appIsRunning)
             {
@@ -19,6 +21,7 @@ namespace BasicBankAppNum2
             
         }
 
+        //Bank introduction / initial Menu
         public static void BankIntro()
         {
             Console.WriteLine("*******************************************************");
@@ -35,6 +38,7 @@ namespace BasicBankAppNum2
 
         }
        
+        //This is where I take the users selection input and navigate in the program per their choice
         public static void MainMenuSelection()
         {
             switch (userChoice)
@@ -60,7 +64,7 @@ namespace BasicBankAppNum2
             
 
         }
-
+        //this is the method that presents new options after a transaction is completed
         private static void NewChoice()
         {
             Console.WriteLine("Would you like to complete another transaction?");

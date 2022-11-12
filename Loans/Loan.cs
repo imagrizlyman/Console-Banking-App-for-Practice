@@ -39,6 +39,7 @@ namespace BasicBankAppNum2.Loans
         {
 
         }
+
         public double LoanBalance { get { return loanBalance; } set { loanBalance = value; } }
         public string LoanName { get; set; }
         public double LoanOriginationAmount { get { return loanOriginationAmount; } set { } }
@@ -46,6 +47,7 @@ namespace BasicBankAppNum2.Loans
         public double MinimumPayment { get { return minimumPayment; } set { } }
         public int LoanTerm { get { return loanTerm; } set { } }
 
+        //This is the method used for determining the ype of loan the user wants to apply for, currently there is only full functionality for the auto loan type
         public static void LoanTypeDetermination()
         {
             Console.WriteLine("Please Enter the type of loan you are seeking today. (Auto)");
@@ -57,6 +59,7 @@ namespace BasicBankAppNum2.Loans
             }
         }
 
+        //this is the method used to direct the user to the loan application for the chosen loan type, ignore the cases other than auto
         public static bool LoanApplication()
         {
             Console.WriteLine("Thank you for considering Hacker Bank for your loan.");
@@ -88,6 +91,8 @@ namespace BasicBankAppNum2.Loans
             }
             return true;
         }
+
+        //this is the method used for presenting and selecting a loan to manage from your loan list
         public static void CheckExistingLoans()
         {
             int loanSelection;
@@ -138,6 +143,7 @@ namespace BasicBankAppNum2.Loans
                 Console.ReadLine();
             }
         }
+        //This method implements what actions you decided to take woith your loan
         public static void ManageSelectedLoan()
         {
             SelectedLoanMenu();
@@ -176,6 +182,7 @@ namespace BasicBankAppNum2.Loans
                     break;
             }
         }
+        //This is the menu presented to the user for managing a selected loan
         public static void SelectedLoanMenu()
         {
             Console.WriteLine("How can we help you with this loan?");
@@ -184,6 +191,7 @@ namespace BasicBankAppNum2.Loans
             Console.WriteLine("3. Check current interest rate");
             Console.WriteLine("4. Return to Account Menu");
         }
+        //Method for making a payment on a loan
         public static void MakeLoanPayment()
         {
             Console.WriteLine($"Your minimum payment for {CustomerAccounts.selectedLoan.LoanName} is ${CustomerAccounts.selectedLoan.MinimumPayment}");

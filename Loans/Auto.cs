@@ -14,6 +14,7 @@ namespace BasicBankAppNum2.Loans
 
         }
 
+        //This is the data collection portion of the loan application specific to an Auto loan
         public static void AutoLoanInformationCollection()
         {
             Console.WriteLine("Please enter the dollar amount you are requesting for your Auto loan:");
@@ -63,7 +64,7 @@ namespace BasicBankAppNum2.Loans
 
 
         }
-
+        //This is the method that returns the application decision for an auto loan
         public static bool AutoLoanApplication()
         {
             double monthlyIncome = annualIncome / 12;
@@ -74,7 +75,7 @@ namespace BasicBankAppNum2.Loans
             return true;
             
         }
-
+        //This method determines the max amount of an auto loan an individual can be approved for
         public static void MaxLoanAmountDetermination()
         {
             string loanWorthiness;
@@ -114,6 +115,8 @@ namespace BasicBankAppNum2.Loans
                     break;
             }
         }
+
+        //This method is where the loan object is created and added to the list in the users account
         public static void AutoLoanEstablishment()
         {
             if (AutoLoanApplication())
